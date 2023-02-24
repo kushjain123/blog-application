@@ -46,13 +46,28 @@ const Text = styled(Typography)`
     font-size: 16px;
 `;
 
+const signupInitialValues = {
+    name:'',
+    username:'',
+    password:''
+}
+
 const Login = () => {
     const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
 
-    const { account, toggleAccount } = useState('login');
+    const [ account, toggleAccount ] = useState('login');
+    const [ signup, setSignup ] = useState(signupInitialValues);
 
     const toggleSignup = () => {
         account === 'signup' ? toggleAccount('login') : toggleAccount('signup');
+    }
+
+    const onInputChange = (e) => {
+        setSignup({...signup,[e.target.name]:e.target.value});
+    }
+
+    const signupUser = () => {
+        
     }
 
     return (
@@ -69,11 +84,11 @@ const Login = () => {
                             <SignupButton onClick={() => toggleSignup()}>Create an account</SignupButton>
                         </Wrapper> :
                         <Wrapper>
-                            <TextField variant="standard" label='Enter Name' />
-                            <TextField variant="standard" label='Enter Username' />
-                            <TextField variant="standard" label='Enter Password' />
+                            <TextField variant="standard" onChange={(e)=>onInputChange(e)} name='name' label='Enter Name' />
+                            <TextField variant="standard" onChange={(e)=>onInputChange(e)} name='username' label='Enter Username' />
+                            <TextField variant="standard" onChange={(e)=>onInputChange(e)} name='password' label='Enter Password' />
 
-                            <SignupButton>Signup</SignupButton>
+                            <SignupButton onClick={()=>signupUser()}>Signup</SignupButton>
                             <Text style={{ textAlign: 'center' }}>OR</Text>
                             <LoginButton variant="contained" onClick={() => toggleSignup()}>Already have an account</LoginButton>
                         </Wrapper>
