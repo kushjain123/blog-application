@@ -21,3 +21,10 @@ export const API_NOTIFICATION_MESSAGES = {
         message: "Unable to connect to the server. Please check internet connectivity and try again."
     }
 }
+
+// API SERVICE URL
+// SAMPLE REQUEST
+// NEED SERVICE CALL: { url: "/", method: "POST/GET/PUT/DELETE" }
+export const SERVICE_URLS = {
+    userSignup: { url: '/signup', method: 'POST' }
+}
